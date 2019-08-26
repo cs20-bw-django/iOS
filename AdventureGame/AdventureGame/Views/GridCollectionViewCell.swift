@@ -41,6 +41,10 @@ class InfiniteGridCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         label.translatesAutoresizingMaskIntoConstraints = true
+        
+        label.layer.borderWidth = 3.0
+        label.layer.borderColor = #colorLiteral(red: 0.2192418128, green: 0.5473350286, blue: 0.9997488856, alpha: 1)
+        
         self.contentView.addSubview(label)
         return label
     }

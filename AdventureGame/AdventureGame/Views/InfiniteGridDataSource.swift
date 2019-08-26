@@ -10,7 +10,7 @@ import UIKit
 
 class InfiniteGridDataSource: NSObject, UICollectionViewDataSource {
     
-    let pathsCacheSize: Int = 256 // arbitrary large number, increase if you use small tile sizes and some cells are not appearing when scrolling
+    let pathsCacheSize: Int = 512 // arbitrary large number, increase if you use small tile sizes and some cells are not appearing when scrolling
     var pathsCache: [IndexPath : GridCoordinates] = [:]
     var pathsCacheIndex: Int = 0
     

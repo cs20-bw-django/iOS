@@ -10,8 +10,8 @@ import UIKit
 
 class InfiniteGridLayout: UICollectionViewLayout {
     
-    let gridSize = CGSize(width: 10000, height: 10000) // arbitrary grid size
-    let tileSize = CGSize(width: 200, height: 200)     // arbitrary tile size
+    let gridSize = CGSize(width: 3600, height: 3600) // arbitrary grid size
+    let tileSize = CGSize(width: 220, height: 220)     // arbitrary tile size
     
     override var collectionViewContentSize: CGSize {
         return gridSize

@@ -26,6 +26,7 @@ class InfiniteGrid: UICollectionView {
         
         self.dataSource = infiniteDataSource
         InfiniteGridCell.register(with: self)
+        RoomCollectionViewCell.register(with: self)
         
         hostView.addSubview(self)
     }

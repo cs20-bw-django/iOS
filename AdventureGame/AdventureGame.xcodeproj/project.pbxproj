@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A28415CD2314780700A8F347 /* RoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28415CC2314780700A8F347 /* RoomCollectionViewCell.swift */; };
 		A2FAFB1F231345BD00366C66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB1E231345BD00366C66 /* AppDelegate.swift */; };
 		A2FAFB24231345BD00366C66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FAFB22231345BD00366C66 /* Main.storyboard */; };
 		A2FAFB26231345BF00366C66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FAFB25231345BF00366C66 /* Assets.xcassets */; };
@@ -14,12 +15,13 @@
 		A2FAFB3423134D5400366C66 /* InfiniteGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB3323134D5400366C66 /* InfiniteGrid.swift */; };
 		A2FAFB3623134D8700366C66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB3523134D8700366C66 /* ViewController.swift */; };
 		A2FAFB3923134FCF00366C66 /* GridCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB3823134FCF00366C66 /* GridCoordinates.swift */; };
-		A2FAFB3B2313502100366C66 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB3A2313502100366C66 /* GridCollectionViewCell.swift */; };
+		A2FAFB3B2313502100366C66 /* InfiniteGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB3A2313502100366C66 /* InfiniteGridCell.swift */; };
 		A2FAFB3D2313628700366C66 /* InfiniteGridDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB3C2313628700366C66 /* InfiniteGridDataSource.swift */; };
 		A2FAFB3F2313636A00366C66 /* InfiniteGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB3E2313636A00366C66 /* InfiniteGridLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A28415CC2314780700A8F347 /* RoomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2FAFB1B231345BD00366C66 /* AdventureGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventureGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FAFB1E231345BD00366C66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2FAFB23231345BD00366C66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -29,7 +31,7 @@
 		A2FAFB3323134D5400366C66 /* InfiniteGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteGrid.swift; sourceTree = "<group>"; };
 		A2FAFB3523134D8700366C66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A2FAFB3823134FCF00366C66 /* GridCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinates.swift; sourceTree = "<group>"; };
-		A2FAFB3A2313502100366C66 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
+		A2FAFB3A2313502100366C66 /* InfiniteGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteGridCell.swift; sourceTree = "<group>"; };
 		A2FAFB3C2313628700366C66 /* InfiniteGridDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteGridDataSource.swift; sourceTree = "<group>"; };
 		A2FAFB3E2313636A00366C66 /* InfiniteGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteGridLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A28415CB231477F400A8F347 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A2FAFB3A2313502100366C66 /* InfiniteGridCell.swift */,
+				A28415CC2314780700A8F347 /* RoomCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A2FAFB12231345BD00366C66 = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +92,7 @@
 				A2FAFB3523134D8700366C66 /* ViewController.swift */,
 				A2FAFB3323134D5400366C66 /* InfiniteGrid.swift */,
 				A2FAFB3E2313636A00366C66 /* InfiniteGridLayout.swift */,
-				A2FAFB3A2313502100366C66 /* GridCollectionViewCell.swift */,
+				A28415CB231477F400A8F347 /* Cells */,
 				A2FAFB3C2313628700366C66 /* InfiniteGridDataSource.swift */,
 			);
 			path = Views;
@@ -169,10 +180,11 @@
 				A2FAFB3F2313636A00366C66 /* InfiniteGridLayout.swift in Sources */,
 				A2FAFB3623134D8700366C66 /* ViewController.swift in Sources */,
 				A2FAFB3923134FCF00366C66 /* GridCoordinates.swift in Sources */,
+				A28415CD2314780700A8F347 /* RoomCollectionViewCell.swift in Sources */,
 				A2FAFB3D2313628700366C66 /* InfiniteGridDataSource.swift in Sources */,
 				A2FAFB1F231345BD00366C66 /* AppDelegate.swift in Sources */,
 				A2FAFB3423134D5400366C66 /* InfiniteGrid.swift in Sources */,
-				A2FAFB3B2313502100366C66 /* GridCollectionViewCell.swift in Sources */,
+				A2FAFB3B2313502100366C66 /* InfiniteGridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

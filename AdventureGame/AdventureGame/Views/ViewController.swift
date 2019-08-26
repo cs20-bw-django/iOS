@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         infiniteGrid?.scrollToCenter()
+        infiniteGrid?.infiniteDataSource.roomsArray = [GridCoordinates(x: 0, y: 0), GridCoordinates(x: 1, y: 1), GridCoordinates(x: 2, y: 2), GridCoordinates(x: 0, y: 1)]
     }
 
     /*

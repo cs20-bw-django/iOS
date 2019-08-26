@@ -10,6 +10,8 @@ import UIKit
 
 class InfiniteGridCell: UICollectionViewCell {
     
+    static var coordinatesArray: [GridCoordinates] = []
+    
     
     private(set) var coordinates = GridCoordinates(x: 0, y: 0) {
         didSet {
@@ -23,17 +25,20 @@ class InfiniteGridCell: UICollectionViewCell {
     }
     
     static func dequeue(from collectionView: UICollectionView, at indexPath: IndexPath,
-                        for coordinates: GridCoordinates) -> InfiniteGridCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? InfiniteGridCell ?? InfiniteGridCell()
-        cell.coordinates = coordinates
-        
-        let coordinatesArray = [GridCoordinates(x: 0, y: 0), GridCoordinates(x: 1, y: 1), GridCoordinates(x: 2, y: 2), GridCoordinates(x: 0, y: 1)]
-        
-        if coordinatesArray.contains(cell.coordinates) {
-            cell.layer.borderWidth = 30
-            cell.layer.borderColor = #colorLiteral(red: 0.8590026498, green: 0.9080110788, blue: 0.9488238692, alpha: 1)
+                        for coordinates: GridCoordinates) -> UICollectionViewCell {
+        if !coordinatesArray.contains(coordinates){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? InfiniteGridCell ?? InfiniteGridCell()
+            cell.coordinates = coordinates
+            return cell
         }
-        return cell
+        
+        if coordinatesArray.contains(coordinates) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell
+            cell!.layer.borderWidth = 30
+            cell!.layer.borderColor = #colorLiteral(red: 0.8590026498, green: 0.9080110788, blue: 0.9488238692, alpha: 1)
+            return cell!
+        }
+        return UICollectionViewCell()
     }
     
     override func prepareForReuse() {
@@ -46,6 +51,9 @@ class InfiniteGridCell: UICollectionViewCell {
 //    }
     
     private func coordinatesLabel( ) -> UILabel {
+        
+        
+        
         if let label = self.contentView.subviews.first as? UILabel {
             return label
         }

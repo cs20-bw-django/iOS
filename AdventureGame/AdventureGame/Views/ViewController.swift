@@ -39,6 +39,8 @@ class ViewController: UIViewController {
     
     func setupUI(){
         
+        let margins = view.layoutMarginsGuide
+        
         // Add room description view and position bottom-left
         descriptionView.backgroundColor = #colorLiteral(red: 0.3246651888, green: 0.3246651888, blue: 0.3246651888, alpha: 1)
         descriptionView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.1)
@@ -48,9 +50,19 @@ class ViewController: UIViewController {
         
         // Add and position player controls
         
+        
         controlStack.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        let controlBgView = UIView(frame: CGRect(x: self.view.frame.width - controlStack.frame.width, y: self.view.frame.height - controlStack.frame.height, width: controlStack.frame.width - 20, height: controlStack.frame.height - 20))
+        controlBgView.backgroundColor = .white
+        controlBgView.layer.cornerRadius = 8.0
+        self.view.addSubview(controlBgView)
         self.view.addSubview(controlStack)
+        controlStack.backgroundColor = .white
         controlStack.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
+//
+        controlStack.translatesAutoresizingMaskIntoConstraints = false
+        controlStack.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: -controlStack.frame.height).isActive = true
+        controlStack.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: 0).isActive = true
         
     }
 

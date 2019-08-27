@@ -26,19 +26,21 @@ class InfiniteGridCell: UICollectionViewCell {
     
     static func dequeue(from collectionView: UICollectionView, at indexPath: IndexPath,
                         for coordinates: GridCoordinates) -> UICollectionViewCell {
-        if !coordinatesArray.contains(coordinates){
+        if coordinatesArray.contains(coordinates) {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell else { fatalError() }
+            cell.backgroundColor = .white
+            cell.layer.borderColor = #colorLiteral(red: 0.1311326623, green: 0.3781063557, blue: 0.6658913493, alpha: 1)
+            cell.layer.borderWidth = 3.0
+            
+            return cell
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? InfiniteGridCell ?? InfiniteGridCell()
             cell.coordinates = coordinates
+            
             return cell
         }
         
-        if coordinatesArray.contains(coordinates) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell
-            cell!.layer.borderWidth = 30
-            cell!.layer.borderColor = #colorLiteral(red: 0.8590026498, green: 0.9080110788, blue: 0.9488238692, alpha: 1)
-            return cell!
-        }
-        return UICollectionViewCell()
+        //return UICollectionViewCell()
     }
     
     override func prepareForReuse() {
@@ -67,8 +69,8 @@ class InfiniteGridCell: UICollectionViewCell {
         label.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         label.translatesAutoresizingMaskIntoConstraints = true
         
-        label.layer.borderWidth = 6.0
-        label.layer.borderColor = #colorLiteral(red: 0.07691047341, green: 0.0657993257, blue: 0.1335668266, alpha: 1)
+        label.layer.borderWidth = 0.5
+        label.layer.borderColor = #colorLiteral(red: 0.3330089152, green: 0.333286792, blue: 0.3330519199, alpha: 1)
         label.backgroundColor = #colorLiteral(red: 0.5455184579, green: 0.5459486246, blue: 0.5455850959, alpha: 1)
         
         self.contentView.addSubview(label)

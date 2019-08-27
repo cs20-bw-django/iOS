@@ -8,10 +8,14 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     var infiniteGrid: InfiniteGrid?
 
+    @IBOutlet var descriptionView: UIView!
+    @IBOutlet var controlStack: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,11 +24,34 @@ class ViewController: UIViewController {
         self.infiniteGrid = InfiniteGrid(hostView: self.view)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        infiniteGrid?.infiniteDataSource.roomsArray = [GridCoordinates(x: 0, y: 0), GridCoordinates(x: 2, y: 0), GridCoordinates(x: 0, y: 2), GridCoordinates(x: -2, y: 0), GridCoordinates(x: 0, y: -2)]
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         infiniteGrid?.scrollToCenter()
-        infiniteGrid?.infiniteDataSource.roomsArray = [GridCoordinates(x: 0, y: 0), GridCoordinates(x: 1, y: 1), GridCoordinates(x: 2, y: 2), GridCoordinates(x: 0, y: 1)]
+        
+        setupUI()
+        
+    }
+    
+    func setupUI(){
+        
+        // Add room description view and position bottom-left
+        descriptionView.backgroundColor = #colorLiteral(red: 0.3246651888, green: 0.3246651888, blue: 0.3246651888, alpha: 1)
+        descriptionView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.1)
+        self.view.addSubview(descriptionView)
+        descriptionView.center = CGPoint(x: self.view.center.x - 120, y: (self.view.center.y + self.view.frame.height * 0.4))
+        descriptionView.layer.cornerRadius = 8.0
+        
+        // Add and position player controls
+        
+        controlStack.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        self.view.addSubview(controlStack)
+        controlStack.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
+        
     }
 
     /*

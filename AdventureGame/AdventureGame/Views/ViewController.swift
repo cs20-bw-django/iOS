@@ -52,17 +52,17 @@ class ViewController: UIViewController {
         
         
         controlStack.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        let controlBgView = UIView(frame: CGRect(x: self.view.frame.width - controlStack.frame.width, y: self.view.frame.height - controlStack.frame.height, width: controlStack.frame.width - 20, height: controlStack.frame.height - 20))
+        let controlBgView = UIView(frame: CGRect(x: self.view.frame.width - controlStack.frame.width, y: self.view.frame.height - controlStack.frame.height, width: controlStack.frame.width, height: controlStack.frame.height))
         controlBgView.backgroundColor = .white
         controlBgView.layer.cornerRadius = 8.0
         self.view.addSubview(controlBgView)
         self.view.addSubview(controlStack)
         controlStack.backgroundColor = .white
-        controlStack.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
+        controlStack.center = CGPoint(x: controlBgView.center.x, y: controlBgView.center.y)
 //
-        controlStack.translatesAutoresizingMaskIntoConstraints = false
-        controlStack.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: -controlStack.frame.height).isActive = true
-        controlStack.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: 0).isActive = true
+//        controlStack.translatesAutoresizingMaskIntoConstraints = false
+//        controlStack.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: -controlStack.frame.height).isActive = true
+//        controlStack.rightAnchor.constraint(equalTo: margins.rightAnchor, constant: 0).isActive = true
         
     }
 

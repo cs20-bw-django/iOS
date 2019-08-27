@@ -36,6 +36,7 @@
                                 <constraint firstAttribute="height" constant="50" id="ufs-SI-9DB"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="up-arrow"/>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="paL-oY-7U9">
@@ -46,6 +47,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="v42-zX-ayO"/>
                                     </constraints>
+                                    <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" image="left-arrow"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5C-ME-f8f">
@@ -53,6 +55,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="iux-L7-mju"/>
                                     </constraints>
+                                    <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" image="right-arrow"/>
                                 </button>
                             </subviews>
@@ -62,6 +65,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="TSV-zG-bis"/>
                             </constraints>
+                            <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="down-arrow"/>
                         </button>
                     </subviews>

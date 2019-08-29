@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MJs-dA-cqZ">
     <device id="ipad12_9rounded" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,9 +20,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="vuO-xr-FYH"/>
                     <connections>
                         <outlet property="controlStack" destination="49p-8I-apr" id="8b5-tP-FZd"/>
                         <outlet property="descriptionView" destination="MJc-Ka-dwS" id="BkJ-2v-iSR"/>
+                        <segue destination="6Oc-Mc-Zub" kind="presentation" identifier="LoginViewModalSegue" id="Dj2-9b-4pl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -38,6 +40,9 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="up-arrow"/>
+                            <connections>
+                                <action selector="upButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MKF-Vu-FxD"/>
+                            </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="paL-oY-7U9">
                             <rect key="frame" x="0.0" y="50" width="124" height="50"/>
@@ -49,6 +54,9 @@
                                     </constraints>
                                     <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" image="left-arrow"/>
+                                    <connections>
+                                        <action selector="leftButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ic2-1s-FhX"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5C-ME-f8f">
                                     <rect key="frame" x="82" y="0.0" width="42" height="50"/>
@@ -57,6 +65,9 @@
                                     </constraints>
                                     <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" image="right-arrow"/>
+                                    <connections>
+                                        <action selector="rightButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WAn-f2-BXe"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -67,6 +78,9 @@
                             </constraints>
                             <color key="tintColor" red="0.98823529409999999" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="down-arrow"/>
+                            <connections>
+                                <action selector="downButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CEt-gf-w4S"/>
+                            </connections>
                         </button>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="0yS-9d-zQN"/>
@@ -92,6 +106,7 @@
                     <viewLayoutGuide key="safeArea" id="hzB-VA-ilG"/>
                 </view>
             </objects>
+            <point key="canvasLocation" x="704.97803806734987" y="16.9921875"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="R2i-Sg-DnG">
@@ -107,10 +122,13 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YML-jn-i8Y">
                                         <rect key="frame" x="0.0" y="0.0" width="956" height="62.5"/>
                                         <segments>
-                                            <segment title="Login"/>
                                             <segment title="Sign Up"/>
+                                            <segment title="Login"/>
                                         </segments>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="segmentedControlTapped:" destination="6Oc-Mc-Zub" eventType="valueChanged" id="XJc-mh-Dgc"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="e9H-Nj-MvM" userLabel="TextFieldStack">
                                         <rect key="frame" x="0.0" y="97.5" width="956" height="209.5"/>
@@ -143,15 +161,18 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOE-nX-Kly">
-                                <rect key="frame" x="205" y="395" width="956" height="120"/>
+                                <rect key="frame" x="205" y="395" width="956" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="eL8-1N-2gI"/>
+                                    <constraint firstAttribute="height" constant="90" id="eL8-1N-2gI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="6Oc-Mc-Zub" eventType="touchUpInside" id="cMl-xc-WT4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -166,10 +187,35 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YUC-Th-Xhl"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmTextfield" destination="Fey-CM-DH7" id="izW-TI-hF2"/>
+                        <outlet property="loginButton" destination="NOE-nX-Kly" id="q15-jM-wlm"/>
+                        <outlet property="passwordTextField" destination="BXV-30-4td" id="C4K-f0-38n"/>
+                        <outlet property="segmentedControl" destination="YML-jn-i8Y" id="46E-r2-rYU"/>
+                        <outlet property="usernameTextField" destination="OOL-1R-fIX" id="P6E-n3-RzJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxv-ya-nTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="-664"/>
+            <point key="canvasLocation" x="1447" y="17"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GIZ-mX-rHC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MJs-dA-cqZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KjZ-kb-bjQ">
+                        <rect key="frame" x="0.0" y="24" width="1366" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Zl1-Ld-nbH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6EJ-dT-grd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="17"/>
         </scene>
     </scenes>
     <resources>

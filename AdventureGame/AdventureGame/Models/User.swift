@@ -1,5 +1,5 @@
 //
-//  APIController.swift
+//  User.swift
 //  AdventureGame
 //
 //  Created by Angel Buenrostro on 8/29/19.
@@ -7,13 +7,9 @@
 //
 
 import Foundation
-import UIKit
 
-class APIController {
-    
-//    private let baseURL = URL(string: "")!
-
-    var bearer: Bearer?
-    
-    
+struct User: Codable {
+    let username: String
+    let password1: String
+    let password2: String?
 }

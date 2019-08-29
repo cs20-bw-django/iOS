@@ -8,8 +8,18 @@
 
 import UIKit
 
+enum Direction {
+    case north
+    case east
+    case west
+    case south
+}
+
 
 class ViewController: UIViewController {
+    
+    var direction = Direction.north
+    var position = GridCoordinates(x: 0, y: 0)
     
     var infiniteGrid: InfiniteGrid?
     let uiBgColor = #colorLiteral(red: 0.3390211761, green: 0.3568487763, blue: 0.3945870399, alpha: 1)
@@ -26,7 +36,8 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        infiniteGrid?.infiniteDataSource.roomsArray = [GridCoordinates(x: 0, y: 0), GridCoordinates(x: 2, y: 0), GridCoordinates(x: 0, y: 2), GridCoordinates(x: -2, y: 0), GridCoordinates(x: 0, y: -2)]
+        self.navigationController?.navigationBar.isHidden = true
+        infiniteGrid?.infiniteDataSource.roomsArray = [GridCoordinates(x: 0, y: 0)]
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +71,49 @@ class ViewController: UIViewController {
         controlStack.center = CGPoint(x: controlBgView.center.x, y: controlBgView.center.y)
         
     }
+    
+    // MARK: - Action Handlers
 
+    @IBAction func upButtonTapped(_ sender: UIButton) {
+        // if current room description contains "north" execute, else return
+        direction = Direction.north
+        calculateMovement()
+    }
+    @IBAction func downButtonTapped(_ sender: UIButton) {
+        direction = Direction.south
+        calculateMovement()
+    }
+    @IBAction func rightButtonTapped(_ sender: UIButton) {
+        direction = Direction.east
+        calculateMovement()
+    }
+    @IBAction func leftButtonTapped(_ sender: UIButton) {
+        direction = Direction.west
+        calculateMovement()
+    }
+    
+    // MARK: - Helper Functions
+    
+    func calculateMovement() {
+        // based on button pressed alter var position
+        let xPos = position.x
+        let yPos = position.y
+        switch direction {
+        case .north:
+            position = GridCoordinates(x: xPos, y: yPos - 2)
+        case .south:
+            position = GridCoordinates(x: xPos, y: yPos + 2)
+        case .east:
+            position = GridCoordinates(x: xPos + 2, y: yPos)
+        case .west:
+            position = GridCoordinates(x: xPos - 2, y: yPos)
+        }
+        
+        // Add new position to rooms array then reload grid to display change
+        infiniteGrid?.infiniteDataSource.roomsArray?.append(position)
+        infiniteGrid?.reloadData()
+    }
+    
     /*
     // MARK: - Navigation
 

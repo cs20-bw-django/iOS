@@ -93,6 +93,84 @@
                 </view>
             </objects>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="R2i-Sg-DnG">
+            <objects>
+                <viewController id="6Oc-Mc-Zub" customClass="LoginViewController" customModule="AdventureGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zKE-7y-IG0">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="jO2-8V-sBP">
+                                <rect key="frame" x="205" y="64" width="956" height="307"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YML-jn-i8Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="956" height="62.5"/>
+                                        <segments>
+                                            <segment title="Login"/>
+                                            <segment title="Sign Up"/>
+                                        </segments>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="e9H-Nj-MvM" userLabel="TextFieldStack">
+                                        <rect key="frame" x="0.0" y="97.5" width="956" height="209.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="OOL-1R-fIX">
+                                                <rect key="frame" x="0.0" y="0.0" width="956" height="56"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BXV-30-4td">
+                                                <rect key="frame" x="0.0" y="77" width="956" height="56"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Type Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fey-CM-DH7">
+                                                <rect key="frame" x="0.0" y="154" width="956" height="55.5"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YML-jn-i8Y" firstAttribute="width" secondItem="jO2-8V-sBP" secondAttribute="width" id="cxS-Q0-hAH"/>
+                                    <constraint firstItem="YML-jn-i8Y" firstAttribute="height" secondItem="jO2-8V-sBP" secondAttribute="height" multiplier="0.2" id="kWw-jm-gaC"/>
+                                    <constraint firstItem="e9H-Nj-MvM" firstAttribute="width" secondItem="jO2-8V-sBP" secondAttribute="width" id="wtx-9x-nqI"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOE-nX-Kly">
+                                <rect key="frame" x="205" y="395" width="956" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="eL8-1N-2gI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jO2-8V-sBP" firstAttribute="height" secondItem="zKE-7y-IG0" secondAttribute="height" multiplier="0.3" id="3sc-Kn-uNF"/>
+                            <constraint firstItem="jO2-8V-sBP" firstAttribute="centerX" secondItem="zKE-7y-IG0" secondAttribute="centerX" id="6hV-8M-Awr"/>
+                            <constraint firstItem="NOE-nX-Kly" firstAttribute="top" secondItem="jO2-8V-sBP" secondAttribute="bottom" constant="24" id="CZi-yK-pQR"/>
+                            <constraint firstItem="NOE-nX-Kly" firstAttribute="width" secondItem="jO2-8V-sBP" secondAttribute="width" id="Dzg-i6-tLL"/>
+                            <constraint firstItem="jO2-8V-sBP" firstAttribute="width" secondItem="zKE-7y-IG0" secondAttribute="width" multiplier="0.7" id="Mzc-Gp-lQT"/>
+                            <constraint firstItem="NOE-nX-Kly" firstAttribute="centerX" secondItem="zKE-7y-IG0" secondAttribute="centerX" id="Vqo-8L-Zou"/>
+                            <constraint firstItem="jO2-8V-sBP" firstAttribute="top" secondItem="YUC-Th-Xhl" secondAttribute="top" constant="40" id="hMg-6d-HLd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YUC-Th-Xhl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxv-ya-nTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718" y="-664"/>
+        </scene>
     </scenes>
     <resources>
         <image name="down-arrow" width="24" height="24"/>

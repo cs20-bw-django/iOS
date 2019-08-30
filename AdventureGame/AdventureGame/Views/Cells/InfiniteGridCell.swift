@@ -31,7 +31,7 @@ class InfiniteGridCell: UICollectionViewCell {
         if let playerPos = playerCoordinates {
             if coordinates == playerPos {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell else { fatalError() }
-                cell.backgroundColor = .purple
+                cell.backgroundColor = .black
                 
                 // add emoji label
                 let emoji = UILabel(frame: cell.bounds)

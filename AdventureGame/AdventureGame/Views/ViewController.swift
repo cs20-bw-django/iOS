@@ -33,6 +33,10 @@ class ViewController: UIViewController {
     let uiBgColor = #colorLiteral(red: 0.9691255689, green: 0.9698591828, blue: 0.9692392945, alpha: 1)
     
     let startButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+    let nameLabel = UILabel(frame: CGRect(x: 40, y: 24, width: 200, height: 60))
+    let roomLabel = UILabel()
+    let playersLabel = UILabel()
+    var roomDescription = ""
 
     @IBOutlet var descriptionView: UIView!
     @IBOutlet var controlStack: UIStackView!
@@ -101,8 +105,11 @@ class ViewController: UIViewController {
     func updateUI(){
         guard let currentState = state.last else { fatalError() }
         
+        roomLabel.frame = CGRect(x: self.view.center.x - 150, y: 24, width: 300, height: 60)
+        playersLabel.frame = CGRect(x: self.view.frame.width - 340, y: 24, width: 300, height: 180)
+        
         // Add a username, room title, and player list label
-        let nameLabel = UILabel(frame: CGRect(x: 40, y: 24, width: 200, height: 60))
+        
         nameLabel.textAlignment = .center
         nameLabel.text = currentState.name
         nameLabel.backgroundColor = uiBgColor
@@ -111,7 +118,7 @@ class ViewController: UIViewController {
         nameLabel.layer.masksToBounds = true
         self.view.addSubview(nameLabel)
         
-        let roomLabel = UILabel(frame: CGRect(x: self.view.center.x - 150, y: 24, width: 300, height: 60))
+        
         roomLabel.textAlignment = .center
         roomLabel.text = currentState.title
         roomLabel.backgroundColor = uiBgColor
@@ -120,16 +127,16 @@ class ViewController: UIViewController {
         roomLabel.layer.masksToBounds = true
         self.view.addSubview(roomLabel)
         
-        let playersLabel = UILabel(frame: CGRect(x: self.view.frame.width - 340, y: 24, width: 300, height: 120))
+        
         playersLabel.textAlignment = .right
-        playersLabel.numberOfLines = 0
+        playersLabel.numberOfLines = 5
         playersLabel.text = "Players: " + "\n" + (currentState.players?.joined(separator: "\n"))!
         playersLabel.backgroundColor = .clear
         playersLabel.font = playersLabel.font.withSize(18)
         playersLabel.textColor = .white
         self.view.addSubview(playersLabel)
         
-        let roomDescription = currentState.description
+        roomDescription = currentState.description!
         descriptionLabel.text = roomDescription
         startButton.isEnabled = false
         startButton.isHidden = true
@@ -152,20 +159,72 @@ class ViewController: UIViewController {
 
     @IBAction func upButtonTapped(_ sender: UIButton) {
         // if current room description contains "north" execute, else return
-        direction = Direction.north
-        calculateMovement()
+        let move = "n"
+        apiController.move(direction: move) { (result) in
+            if let gameState = try? result.get() {
+                DispatchQueue.main.async {
+                    if gameState.error_msg != "" {
+                        return
+                    } else {
+                        self.direction = Direction.north
+                        self.calculateMovement()
+                        self.state.append(gameState)
+                        self.updateUI()
+                    }
+                }
+            }
+        }
     }
     @IBAction func downButtonTapped(_ sender: UIButton) {
-        direction = Direction.south
-        calculateMovement()
+        let move = "s"
+        apiController.move(direction: move) { (result) in
+            if let gameState = try? result.get() {
+                DispatchQueue.main.async {
+                    if gameState.error_msg != "" {
+                        return
+                    } else {
+                        self.direction = Direction.south
+                        self.calculateMovement()
+                        self.state.append(gameState)
+                        self.updateUI()
+                    }
+                }
+            }
+        }
     }
     @IBAction func rightButtonTapped(_ sender: UIButton) {
-        direction = Direction.east
-        calculateMovement()
+        let move = "e"
+        apiController.move(direction: move) { (result) in
+            if let gameState = try? result.get() {
+                DispatchQueue.main.async {
+                    if gameState.error_msg != "" {
+                        return
+                    } else {
+                        self.direction = Direction.east
+                        self.calculateMovement()
+                        self.state.append(gameState)
+                        self.updateUI()
+                    }
+                }
+            }
+        }
     }
     @IBAction func leftButtonTapped(_ sender: UIButton) {
-        direction = Direction.west
-        calculateMovement()
+        let move = "w"
+        apiController.move(direction: move) { (result) in
+            if let gameState = try? result.get() {
+                DispatchQueue.main.async {
+                    if gameState.error_msg != "" {
+                        return
+                    } else {
+                        self.direction = Direction.west
+                        self.calculateMovement()
+                        self.state.append(gameState)
+                        self.updateUI()
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - Helper Functions

@@ -16,6 +16,8 @@ class InfiniteGrid: UICollectionView {
             self.reloadData()
         }
     }
+    
+    var playerCoordinates = GridCoordinates(x: 0, y: 0) 
 
     
     convenience init(hostView: UIView) {

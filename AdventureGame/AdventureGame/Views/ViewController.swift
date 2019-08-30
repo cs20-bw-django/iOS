@@ -186,6 +186,7 @@ class ViewController: UIViewController {
         
         // Add new position to rooms array then reload grid to display change
         infiniteGrid?.infiniteDataSource.roomsSet?.insert(position)
+        infiniteGrid?.infiniteDataSource.playerCoordinates = position
         infiniteGrid?.reloadData()
     }
     

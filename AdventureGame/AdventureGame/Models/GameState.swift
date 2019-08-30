@@ -9,11 +9,11 @@
 import Foundation
 
 struct GameState: Codable {
-    let uuid: UUID?
+    let uuid: String?
     let name: String?
     let title: String?
     let description: String?
-    let players: [Player]?
+    let players: [String]?
     let error_msg: String?
 }
 

@@ -125,4 +125,45 @@ class APIController {
             completion(nil)
             }.resume()
     }
+    
+    func initialize(completion: @escaping (Result<GameState, NetworkError>) -> Void) {
+        guard let bearer = bearer else {
+            completion(.failure(.noAuth))
+            return
+        }
+        
+        let initializeURL = baseURL.appendingPathComponent("adv/init/")
+        print(initializeURL)
+        
+        var request = URLRequest(url: initializeURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.addValue("Token \(bearer.key)", forHTTPHeaderField: "Authorization")
+        print("Token \(bearer.key)")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 401 {
+                completion(.failure(.badAuth))
+                return
+            }
+            
+            if let _ = error {
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.badData))
+                return
+            }
+            let jsonDecoder = JSONDecoder()
+            do {
+                let gameState = try jsonDecoder.decode(GameState.self, from: data)
+                print("Game State: \(gameState.name) + \(gameState.title) + \(gameState.description) + \(gameState.uuid)")
+                completion(.success(gameState))
+            } catch {
+                completion(.failure(.noDecode))
+            }
+        }.resume()
+    }
 }

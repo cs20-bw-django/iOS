@@ -23,6 +23,7 @@
                     <navigationItem key="navigationItem" id="vuO-xr-FYH"/>
                     <connections>
                         <outlet property="controlStack" destination="49p-8I-apr" id="8b5-tP-FZd"/>
+                        <outlet property="descriptionLabel" destination="UeI-4x-40j" id="vbG-Mx-AaM"/>
                         <outlet property="descriptionView" destination="MJc-Ka-dwS" id="BkJ-2v-iSR"/>
                         <segue destination="6Oc-Mc-Zub" kind="presentation" identifier="LoginViewModalSegue" id="Dj2-9b-4pl"/>
                     </connections>

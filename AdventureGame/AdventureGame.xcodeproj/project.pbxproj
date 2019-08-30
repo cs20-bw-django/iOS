@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A2066D152315EC5500500C65 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D142315EC5500500C65 /* GameState.swift */; };
 		A2066D172315ED8E00500C65 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D162315ED8E00500C65 /* Bearer.swift */; };
-		A2066D192315EE3100500C65 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D182315EE3100500C65 /* Player.swift */; };
 		A2066D1C2317CAF600500C65 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D1B2317CAF600500C65 /* APIController.swift */; };
 		A2066D1E2317CB7C00500C65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D1D2317CB7C00500C65 /* LoginViewController.swift */; };
 		A2066D222318AB1800500C65 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D212318AB1800500C65 /* UserRegister.swift */; };
@@ -30,7 +29,6 @@
 /* Begin PBXFileReference section */
 		A2066D142315EC5500500C65 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		A2066D162315ED8E00500C65 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
-		A2066D182315EE3100500C65 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A2066D1B2317CAF600500C65 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		A2066D1D2317CB7C00500C65 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A2066D212318AB1800500C65 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				A2066D142315EC5500500C65 /* GameState.swift */,
-				A2066D182315EE3100500C65 /* Player.swift */,
 				A2FAFB3823134FCF00366C66 /* GridCoordinates.swift */,
 				A2066D162315ED8E00500C65 /* Bearer.swift */,
 				A2066D212318AB1800500C65 /* UserRegister.swift */,
@@ -207,7 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2066D222318AB1800500C65 /* UserRegister.swift in Sources */,
-				A2066D192315EE3100500C65 /* Player.swift in Sources */,
 				A2066D242318AB3300500C65 /* UserLogin.swift in Sources */,
 				A2066D172315ED8E00500C65 /* Bearer.swift in Sources */,
 				A2FAFB3F2313636A00366C66 /* InfiniteGridLayout.swift in Sources */,

@@ -19,15 +19,23 @@ enum Direction {
 class ViewController: UIViewController {
     
     let apiController = APIController()
+    var state:[GameState] = [] {
+        didSet{
+            infiniteGrid?.infiniteDataSource.roomsArray?.append(position)
+        }
+    }
     
     var direction = Direction.north
     var position = GridCoordinates(x: 0, y: 0)
     
     var infiniteGrid: InfiniteGrid?
     let uiBgColor = #colorLiteral(red: 0.3390211761, green: 0.3568487763, blue: 0.3945870399, alpha: 1)
+    
+    let startButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
 
     @IBOutlet var descriptionView: UIView!
     @IBOutlet var controlStack: UIStackView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +60,21 @@ class ViewController: UIViewController {
         // Validate bearer token
         if apiController.bearer == nil {
             performSegue(withIdentifier: "LoginViewModalSegue", sender: self)
+        } else {
+            
         }
         
     }
     
     func setupUI(){
+        
+        // Add start adventure (initialize) button
+        startButton.layer.cornerRadius = 8.0
+        startButton.backgroundColor = .black
+        startButton.setTitle("Start Adventure", for: .normal)
+        startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+        self.view.addSubview(startButton)
+        startButton.center = self.view.center
         
         // Add room description view and position bottom-left
         descriptionView.backgroundColor = uiBgColor
@@ -79,7 +97,28 @@ class ViewController: UIViewController {
         
     }
     
+    func updateUI(){
+        let roomDescription = self.state.last?.description
+        descriptionLabel.text = roomDescription
+        startButton.isEnabled = false
+        startButton.isHidden = true
+        print("This is the update UI func")
+        //self.view.setNeedsDisplay()
+    }
+    
     // MARK: - Action Handlers
+    
+    @objc func startButtonTapped(sender: UIButton!) {
+        apiController.initialize { (result) in
+            if let gameState = try? result.get() {
+                DispatchQueue.main.async {
+                    print(gameState.description)
+                    self.state.append(gameState)
+                    self.updateUI()
+                }
+            }
+        }
+    }
 
     @IBAction func upButtonTapped(_ sender: UIButton) {
         // if current room description contains "north" execute, else return

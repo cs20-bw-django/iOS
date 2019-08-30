@@ -11,6 +11,7 @@ import UIKit
 class InfiniteGridCell: UICollectionViewCell {
     
     static var coordinatesSet: Set<GridCoordinates> = []
+    static var roadSet: Set<GridCoordinates> = []
     
     static var playerCoordinates: GridCoordinates?
 
@@ -31,22 +32,37 @@ class InfiniteGridCell: UICollectionViewCell {
             if coordinates == playerPos {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell else { fatalError() }
                 cell.backgroundColor = .purple
+                
+                // add emoji label
+                let emoji = UILabel(frame: cell.bounds)
+                emoji.text = "🥳"
+                emoji.textAlignment = .center
+                emoji.font = UIFont(name: "AppleColorEmoji", size: 50)
+                cell.backgroundView = emoji
                 return cell
             }
+        }
+        
+        if roadSet.contains(coordinates) {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell else { fatalError() }
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.9295691252, blue: 0.855507791, alpha: 1)
+            cell.backgroundView = nil
+            
+            
+            return cell
         }
         
         if coordinatesSet.contains(coordinates) {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell else { fatalError() }
             cell.backgroundColor = .white
-            cell.layer.borderColor = #colorLiteral(red: 0.1311326623, green: 0.3781063557, blue: 0.6658913493, alpha: 1)
-            cell.layer.borderWidth = 3.0
+            cell.backgroundView = nil
             
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? InfiniteGridCell ?? InfiniteGridCell()
             cell.coordinates = coordinates
-            
+            cell.backgroundView = nil
             return cell
         }
         
@@ -55,11 +71,13 @@ class InfiniteGridCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.layer.borderWidth = 0
+        self.backgroundView = nil
     }
     
 //    private func roomLabel() -> UILabel {
 //        return
 //    }
+    
     
     private func coordinatesLabel( ) -> UILabel {
         
@@ -80,9 +98,9 @@ class InfiniteGridCell: UICollectionViewCell {
         
         label.layer.borderWidth = 0.5
         label.layer.borderColor = #colorLiteral(red: 0.3330089152, green: 0.333286792, blue: 0.3330519199, alpha: 1)
-        label.backgroundColor = #colorLiteral(red: 0.5455184579, green: 0.5459486246, blue: 0.5455850959, alpha: 1)
+        label.backgroundColor = #colorLiteral(red: 0.5495000482, green: 0.5495842695, blue: 0.5494885445, alpha: 1)
         
-        self.contentView.addSubview(label)
+        self.contentView.insertSubview(label, at: 0)
         return label
     }
 }

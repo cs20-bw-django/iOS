@@ -17,7 +17,7 @@ class InfiniteGrid: UICollectionView {
         }
     }
     
-    var playerCoordinates = GridCoordinates(x: 0, y: 0) 
+    // var playerCoordinates = GridCoordinates(x: 0, y: 0) 
 
     
     convenience init(hostView: UIView) {

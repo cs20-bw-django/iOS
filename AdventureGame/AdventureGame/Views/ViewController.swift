@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     var direction = Direction.north
     var position = GridCoordinates(x: 0, y: 0)
+    var roadPosition = GridCoordinates(x: 0, y: 0)
     
     var infiniteGrid: InfiniteGrid?
     let uiBgColor = #colorLiteral(red: 0.9691255689, green: 0.9698591828, blue: 0.9692392945, alpha: 1)
@@ -176,16 +177,21 @@ class ViewController: UIViewController {
         switch direction {
         case .north:
             position = GridCoordinates(x: xPos, y: yPos - 2)
+            roadPosition = GridCoordinates(x: xPos, y: yPos - 1)
         case .south:
             position = GridCoordinates(x: xPos, y: yPos + 2)
+            roadPosition = GridCoordinates(x: xPos, y: yPos + 1)
         case .east:
             position = GridCoordinates(x: xPos + 2, y: yPos)
+            roadPosition = GridCoordinates(x: xPos + 1, y: yPos)
         case .west:
             position = GridCoordinates(x: xPos - 2, y: yPos)
+            roadPosition = GridCoordinates(x: xPos - 1, y: yPos)
         }
         
         // Add new position to rooms array then reload grid to display change
         infiniteGrid?.infiniteDataSource.roomsSet?.insert(position)
+        infiniteGrid?.infiniteDataSource.roadSet.insert(roadPosition)
         infiniteGrid?.infiniteDataSource.playerCoordinates = position
         infiniteGrid?.reloadData()
     }

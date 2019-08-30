@@ -14,6 +14,7 @@ class InfiniteGridDataSource: NSObject, UICollectionViewDataSource {
     var pathsCache: [IndexPath : GridCoordinates] = [:]
     var pathsCacheIndex: Int = 0
     var roomsSet: Set<GridCoordinates>?
+    var roadSet: Set<GridCoordinates> = [] 
     var playerCoordinates = GridCoordinates(x: 0, y: 0)
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -30,6 +31,9 @@ class InfiniteGridDataSource: NSObject, UICollectionViewDataSource {
         if let rooms = roomsSet {
             InfiniteGridCell.playerCoordinates = playerCoordinates
             InfiniteGridCell.coordinatesSet = rooms
+            if roadSet.count > 0 {
+                InfiniteGridCell.roadSet = roadSet
+            }
         }
         
         return InfiniteGridCell.dequeue(from: collectionView, at: indexPath, for: coordinates)

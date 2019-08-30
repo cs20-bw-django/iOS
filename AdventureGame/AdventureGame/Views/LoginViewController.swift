@@ -37,6 +37,17 @@ class LoginViewController: UIViewController {
     // MARK: - Action Handlers
     
     @IBAction func segmentedControlTapped(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            loginType = .signIn
+            loginButton.setTitle("Sign In", for: .normal)
+            confirmTextField.isEnabled = false
+            confirmTextField.isHidden = true
+        } else {
+            loginType = .signUp
+            loginButton.setTitle("Sign Up", for: .normal)
+            confirmTextField.isEnabled = true
+            confirmTextField.isHidden = false
+        }
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -48,16 +59,38 @@ class LoginViewController: UIViewController {
             let password1 = passwordTextField.text,
             !password1.isEmpty,
             let password2 = confirmTextField.text,
-            !password2.isEmpty {
-            let user = User(username: username, password1: password1, password2: password2)
+            !password2.isEmpty,
+            segmentedControl.selectedSegmentIndex == 0 {
+            let userRegister = UserRegister(username: username, password1: password1, password2: password2)
             
-            if loginType == .signUp {
-                // signup with apicontroller function
-                
-                // Dispatch queue main to perform UI changes
+            apiController.signUp(with: userRegister) { error in
+                if let error = error {
+                    print("Error occurred during sign up: \(error.localizedDescription)")
+                } else {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+        }   else {
+                if let username = usernameTextField.text,
+                    !username.isEmpty,
+                    let password = passwordTextField.text,
+                    !password.isEmpty {
+                    let userLogin = UserLogin(username: username, password: password)
+                    
+                    apiController.signIn(with: userLogin, completion: { (error) in
+                            if let error = error {
+                                print("Error occurred during sign in: \(error.localizedDescription)")
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                    })
+                }
             }
         }
-    }
     
     /*
     // MARK: - Navigation

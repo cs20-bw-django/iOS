@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserRegister.swift
 //  AdventureGame
 //
 //  Created by Angel Buenrostro on 8/29/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct User: Codable {
+struct UserRegister: Codable {
     let username: String
     let password1: String
-    let password2: String?
+    let password2: String
 }

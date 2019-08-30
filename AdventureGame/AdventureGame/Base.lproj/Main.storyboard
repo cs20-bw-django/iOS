@@ -123,7 +123,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="956" height="62.5"/>
                                         <segments>
                                             <segment title="Sign Up"/>
-                                            <segment title="Login"/>
+                                            <segment title="Sign In"/>
                                         </segments>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -188,7 +188,7 @@
                         <viewLayoutGuide key="safeArea" id="YUC-Th-Xhl"/>
                     </view>
                     <connections>
-                        <outlet property="confirmTextfield" destination="Fey-CM-DH7" id="izW-TI-hF2"/>
+                        <outlet property="confirmTextField" destination="Fey-CM-DH7" id="V7f-eD-bnx"/>
                         <outlet property="loginButton" destination="NOE-nX-Kly" id="q15-jM-wlm"/>
                         <outlet property="passwordTextField" destination="BXV-30-4td" id="C4K-f0-38n"/>
                         <outlet property="segmentedControl" destination="YML-jn-i8Y" id="46E-r2-rYU"/>

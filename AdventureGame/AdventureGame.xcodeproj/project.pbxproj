@@ -12,7 +12,8 @@
 		A2066D192315EE3100500C65 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D182315EE3100500C65 /* Player.swift */; };
 		A2066D1C2317CAF600500C65 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D1B2317CAF600500C65 /* APIController.swift */; };
 		A2066D1E2317CB7C00500C65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D1D2317CB7C00500C65 /* LoginViewController.swift */; };
-		A2066D202318638F00500C65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D1F2318638F00500C65 /* User.swift */; };
+		A2066D222318AB1800500C65 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D212318AB1800500C65 /* UserRegister.swift */; };
+		A2066D242318AB3300500C65 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2066D232318AB3300500C65 /* UserLogin.swift */; };
 		A28415CD2314780700A8F347 /* RoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28415CC2314780700A8F347 /* RoomCollectionViewCell.swift */; };
 		A2FAFB1F231345BD00366C66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FAFB1E231345BD00366C66 /* AppDelegate.swift */; };
 		A2FAFB24231345BD00366C66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FAFB22231345BD00366C66 /* Main.storyboard */; };
@@ -32,7 +33,8 @@
 		A2066D182315EE3100500C65 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A2066D1B2317CAF600500C65 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		A2066D1D2317CB7C00500C65 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		A2066D1F2318638F00500C65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A2066D212318AB1800500C65 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
+		A2066D232318AB3300500C65 /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		A28415CC2314780700A8F347 /* RoomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2FAFB1B231345BD00366C66 /* AdventureGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventureGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FAFB1E231345BD00366C66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +129,8 @@
 				A2066D182315EE3100500C65 /* Player.swift */,
 				A2FAFB3823134FCF00366C66 /* GridCoordinates.swift */,
 				A2066D162315ED8E00500C65 /* Bearer.swift */,
-				A2066D1F2318638F00500C65 /* User.swift */,
+				A2066D212318AB1800500C65 /* UserRegister.swift */,
+				A2066D232318AB3300500C65 /* UserLogin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,13 +206,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2066D222318AB1800500C65 /* UserRegister.swift in Sources */,
 				A2066D192315EE3100500C65 /* Player.swift in Sources */,
+				A2066D242318AB3300500C65 /* UserLogin.swift in Sources */,
 				A2066D172315ED8E00500C65 /* Bearer.swift in Sources */,
 				A2FAFB3F2313636A00366C66 /* InfiniteGridLayout.swift in Sources */,
 				A2FAFB3623134D8700366C66 /* ViewController.swift in Sources */,
 				A2FAFB3923134FCF00366C66 /* GridCoordinates.swift in Sources */,
 				A28415CD2314780700A8F347 /* RoomCollectionViewCell.swift in Sources */,
-				A2066D202318638F00500C65 /* User.swift in Sources */,
 				A2FAFB3D2313628700366C66 /* InfiniteGridDataSource.swift in Sources */,
 				A2FAFB1F231345BD00366C66 /* AppDelegate.swift in Sources */,
 				A2066D1C2317CAF600500C65 /* APIController.swift in Sources */,

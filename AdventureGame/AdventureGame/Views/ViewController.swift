@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     var position = GridCoordinates(x: 0, y: 0)
     
     var infiniteGrid: InfiniteGrid?
-    let uiBgColor = #colorLiteral(red: 0.3390211761, green: 0.3568487763, blue: 0.3945870399, alpha: 1)
+    let uiBgColor = #colorLiteral(red: 0.9691255689, green: 0.9698591828, blue: 0.9692392945, alpha: 1)
     
     let startButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
 
@@ -98,7 +98,37 @@ class ViewController: UIViewController {
     }
     
     func updateUI(){
-        let roomDescription = self.state.last?.description
+        guard let currentState = state.last else { fatalError() }
+        
+        // Add a username, room title, and player list label
+        let nameLabel = UILabel(frame: CGRect(x: 40, y: 24, width: 200, height: 60))
+        nameLabel.textAlignment = .center
+        nameLabel.text = currentState.name
+        nameLabel.backgroundColor = uiBgColor
+        nameLabel.font = nameLabel.font.withSize(24)
+        nameLabel.layer.cornerRadius = 8.0
+        nameLabel.layer.masksToBounds = true
+        self.view.addSubview(nameLabel)
+        
+        let roomLabel = UILabel(frame: CGRect(x: self.view.center.x - 150, y: 24, width: 300, height: 60))
+        roomLabel.textAlignment = .center
+        roomLabel.text = currentState.title
+        roomLabel.backgroundColor = uiBgColor
+        roomLabel.font = roomLabel.font.withSize(24)
+        roomLabel.layer.cornerRadius = 8.0
+        roomLabel.layer.masksToBounds = true
+        self.view.addSubview(roomLabel)
+        
+        let playersLabel = UILabel(frame: CGRect(x: self.view.frame.width - 340, y: 24, width: 300, height: 120))
+        playersLabel.textAlignment = .right
+        playersLabel.numberOfLines = 0
+        playersLabel.text = "Players: " + "\n" + (currentState.players?.joined(separator: "\n"))!
+        playersLabel.backgroundColor = .clear
+        playersLabel.font = playersLabel.font.withSize(18)
+        playersLabel.textColor = .white
+        self.view.addSubview(playersLabel)
+        
+        let roomDescription = currentState.description
         descriptionLabel.text = roomDescription
         startButton.isEnabled = false
         startButton.isHidden = true

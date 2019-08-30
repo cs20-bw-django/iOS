@@ -24,7 +24,8 @@ enum NetworkError: Error {
 
 class APIController {
     
-    private let baseURL = URL(string: "https://lambda-mud-test.herokuapp.com/api")!
+    //private let baseURL = URL(string: "https://lambda-mud-test.herokuapp.com/api")!
+    private let baseURL = URL(string: "https://csbw-1.herokuapp.com/api")!
     var bearer: Bearer?
     
     func signUp(with user: UserRegister, completion: @escaping(Error?) -> Void) {

@@ -10,7 +10,7 @@ import UIKit
 
 class InfiniteGridCell: UICollectionViewCell {
     
-    static var coordinatesArray: [GridCoordinates] = []
+    static var coordinatesSet: Set<GridCoordinates> = []
     
     
     private(set) var coordinates = GridCoordinates(x: 0, y: 0) {
@@ -26,7 +26,7 @@ class InfiniteGridCell: UICollectionViewCell {
     
     static func dequeue(from collectionView: UICollectionView, at indexPath: IndexPath,
                         for coordinates: GridCoordinates) -> UICollectionViewCell {
-        if coordinatesArray.contains(coordinates) {
+        if coordinatesSet.contains(coordinates) {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomCollectionViewCell else { fatalError() }
             cell.backgroundColor = .white
             cell.layer.borderColor = #colorLiteral(red: 0.1311326623, green: 0.3781063557, blue: 0.6658913493, alpha: 1)

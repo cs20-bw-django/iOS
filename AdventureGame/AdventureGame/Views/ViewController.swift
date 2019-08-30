@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     let apiController = APIController()
     var state:[GameState] = [] {
         didSet{
-            infiniteGrid?.infiniteDataSource.roomsArray?.append(position)
+            infiniteGrid?.infiniteDataSource.roomsSet!.insert(position)
         }
     }
     
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-        infiniteGrid?.infiniteDataSource.roomsArray = [GridCoordinates(x: 0, y: 0)]
+        infiniteGrid?.infiniteDataSource.roomsSet = [GridCoordinates(x: 0, y: 0)]
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -133,7 +133,6 @@ class ViewController: UIViewController {
         startButton.isEnabled = false
         startButton.isHidden = true
         print("This is the update UI func")
-        //self.view.setNeedsDisplay()
     }
     
     // MARK: - Action Handlers
@@ -186,7 +185,7 @@ class ViewController: UIViewController {
         }
         
         // Add new position to rooms array then reload grid to display change
-        infiniteGrid?.infiniteDataSource.roomsArray?.append(position)
+        infiniteGrid?.infiniteDataSource.roomsSet?.insert(position)
         infiniteGrid?.reloadData()
     }
     

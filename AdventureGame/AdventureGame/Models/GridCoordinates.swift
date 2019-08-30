@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct GridCoordinates: Equatable {
+struct GridCoordinates: Equatable, Hashable {
     let x: Int
     let y: Int
 }
+
+
+

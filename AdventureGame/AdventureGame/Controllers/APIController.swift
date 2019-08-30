@@ -166,4 +166,53 @@ class APIController {
             }
         }.resume()
     }
+    
+    func move(direction: String, completion: @escaping(Result<GameState, NetworkError>) -> Void) {
+        guard let bearer = bearer else {
+            completion(.failure(.noAuth))
+            return
+        }
+        
+        let moveURL = baseURL.appendingPathComponent("adv/move/")
+        
+        var request = URLRequest(url: moveURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.addValue("Token \(bearer.key)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpShouldHandleCookies = false
+        
+        // JSON Body
+        
+        let bodyObject: [String : Any] = [
+            "direction": direction
+        ]
+        request.httpBody = try! JSONSerialization.data(withJSONObject: bodyObject, options: [])
+        
+        // Make network request
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                completion(.failure(.otherError))
+                return
+            }
+            
+            if let _ = error {
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.badData))
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let gameState = try decoder.decode(GameState.self, from: data)
+                completion(.success(gameState))
+            } catch {
+                completion(.failure(.noDecode))
+            }
+        }.resume()
+    }
 }

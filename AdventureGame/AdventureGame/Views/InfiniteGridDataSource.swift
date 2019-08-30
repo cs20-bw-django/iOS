@@ -13,7 +13,7 @@ class InfiniteGridDataSource: NSObject, UICollectionViewDataSource {
     let pathsCacheSize: Int = 1024 // arbitrary large number, increase if you use small tile sizes and some cells are not appearing when scrolling
     var pathsCache: [IndexPath : GridCoordinates] = [:]
     var pathsCacheIndex: Int = 0
-    var roomsArray: [GridCoordinates]? 
+    var roomsSet: Set<GridCoordinates>?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -26,9 +26,9 @@ class InfiniteGridDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let coordinates = pathsCache[indexPath] ?? GridCoordinates(x: 0, y:0)
-        if let rooms = roomsArray {
+        if let rooms = roomsSet {
             
-            InfiniteGridCell.coordinatesArray = rooms
+            InfiniteGridCell.coordinatesSet = rooms
         }
         
         return InfiniteGridCell.dequeue(from: collectionView, at: indexPath, for: coordinates)

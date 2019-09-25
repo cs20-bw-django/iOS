@@ -160,7 +160,6 @@ class APIController {
             let jsonDecoder = JSONDecoder()
             do {
                 let gameState = try jsonDecoder.decode(GameState.self, from: data)
-                print("Game State: \(gameState.name) + \(gameState.title) + \(gameState.description) + \(gameState.uuid)")
                 completion(.success(gameState))
             } catch {
                 completion(.failure(.noDecode))

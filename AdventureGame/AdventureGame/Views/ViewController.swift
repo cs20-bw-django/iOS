@@ -140,7 +140,6 @@ class ViewController: UIViewController {
         descriptionLabel.text = roomDescription
         startButton.isEnabled = false
         startButton.isHidden = true
-        print("This is the update UI func")
     }
     
     // MARK: - Action Handlers
@@ -149,7 +148,6 @@ class ViewController: UIViewController {
         apiController.initialize { (result) in
             if let gameState = try? result.get() {
                 DispatchQueue.main.async {
-                    print(gameState.description)
                     self.state.append(gameState)
                     self.updateUI()
                 }
